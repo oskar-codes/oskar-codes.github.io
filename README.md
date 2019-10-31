@@ -5,3 +5,6 @@
 
 ### Webline
 [Webline](/webline) is a web based terminal with lots of useful functions, like image to base64 conversion, client data fetching and much more!
+
+### Randomizer
+[Randomizer](/webline) is a simple prototype for a tool that randomly chooses an item from user defined lists, or shuffles it!
