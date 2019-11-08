@@ -7,3 +7,6 @@
 
 ### Randomizer
 [Randomizer](/randomizer) is a simple prototype for a tool that randomly chooses an item from user defined lists, or shuffles it!
+
+### Google login
+[Google login](/Google-Login) is a website test for using the Google account API.
