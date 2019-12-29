@@ -1,5 +1,5 @@
 # About me
-I’m a 15 years old web and game developer based in Zurich, Switzerland. I’m the main programmer at [@Artridge](https://twitter.com/ArtridgeGames), where I’ve worked on the projects available [here](https://artridge.itch.io).
+I’m a 15 years old web and game developer based in Zurich, Switzerland. I’m the main programmer at [@Artridge](https://twitter.com/ArtridgeGames), where I work on the projects available [here](https://artridge.itch.io).
 
 # My projects
 ### Tile Swap
