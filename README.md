@@ -1,3 +1,6 @@
+# About me
+I’m a 15 years old web and game developer based in Zurich, Switzerland. I’m the main programmer at [@Artridge](https://twitter.com/ArtridgeGames), where I’ve worked on the projects available [here](https://artridge.itch.io).
+
 # My projects
 ### Tile Swap
 [Tile Swap](/tile-swap) is a little puzzle game with random generation, which means there's an infinite amount of puzzles!
