@@ -10,10 +10,10 @@ Below are linked my own creations, that I develop in my free time.
 [Webline](/webline) is a web based terminal with lots of useful functions, like image to base64 conversion, client data fetching and much more!
 
 ### Firebase chat
-[Firebase chat](/firebase-chat) is a prototype showing how you can use Google's Firebase service as a database to host data for a messaging web app.
+[Firebase chat](/firebase-chat) is a prototype showing how you can use the realtime database in Google's Firebase service to host data for a messaging web app.
 
 ### Randomizer
-[Randomizer](/randomizer) is a simple prototype for a tool that randomly chooses an item from user defined lists, or shuffles it!
+[Randomizer](/randomizer) is a simple prototype for a tool that randomly chooses an item from user defined lists, or shuffles it.
 
 ### Google login
-[Google login](/Google-Login) is a website test for using the Google account API.
+[Google login](/Google-Login) is a website test using the Google accounts API.
