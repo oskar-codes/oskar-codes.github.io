@@ -5,6 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Oskar Codes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .fa-twitter {
+        padding: 20px;
+        font-size: 30px;
+        width: 30px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 50%;
+        background-color: #1da1f2;
+        color: white;
+      }
+
+      .fa-twitter:hover {
+          opacity: 0.7;
+      }
+    </style>
 
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
@@ -30,6 +48,12 @@
         {% if site.github.is_user_page %}
         <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
         {% endif %}
+        
+        <a href="https://twitter.com/ZOSK_" class="fa fa-twitter"></a>
+        
+        <a href="https://dev.to/oskarcodes">
+          <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Oskar Codes's DEV Profile" height="30" width="30">
+        </a>
 
         {% if site.show_downloads %}
         <ul class="downloads">
