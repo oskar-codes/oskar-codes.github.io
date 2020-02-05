@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Oskar Codes</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/cbebc4ac70.js" crossorigin="anonymous"></script>
     <style>
-      .fa-twitter {
+      .icon {
         font-size: 20px;
         width: 30px;
         height: 30px;
@@ -15,16 +15,16 @@
         text-decoration: none;
         margin: 5px 2px;
         border-radius: 5px;
-        background-color: #1da1f2;
-        color: white;
-      }
-      
-      .fa-twitter, .dev-to {
         transition: opacity 0.1s;
       }
 
-      .fa-twitter:hover, .dev-to:hover {
+      .icon:hover {
           opacity: 0.7;
+      }
+      
+      .twitter {
+        background-color: #1da1f2;
+        color: white;
       }
     </style>
 
@@ -53,12 +53,14 @@
         <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
         {% endif %}
         
-        <a href="https://twitter.com/ZOSK_" class="fa fa-twitter"></a>
-        
-        <a class="dev-to" href="https://dev.to/oskarcodes">
-          <img src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg" alt="Oskar Codes's DEV Profile" height="30" width="30">
+        <a class="icon twitter" href="https://twitter.com/ZOSK_">
+          <i class="fab fa-twitter"></i>
         </a>
-
+        
+        <a class="icon dev" href="https://dev.to/oskarcodes">
+          <i class="fab fa-dev"></i>
+        </a>
+        
         {% if site.show_downloads %}
         <ul class="downloads">
           <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
