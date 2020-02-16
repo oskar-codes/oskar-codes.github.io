@@ -5,7 +5,7 @@ Below are linked my own creations, that I develop in my free time.
 # My projects
 ## Desktop Apps
 ### Notes app
-[Notes app](http://www.mediafire.com/file/52yc14b6vbdjxn4/Notes-win32-x64.zip/file) is a simple note manager made using ElectronJS. It lets you easily create and edit notes, with an advanced rich text editor.
+[Notes app](https://www.mediafire.com/file/4bxkfdjo39megu0/Notes-win32-x64.zip/file) is a simple note manager made using ElectronJS. It lets you easily create and edit notes, with an advanced rich text editor.
 
 ### Discord Webhook Client
 [Discord Webhook Client](http://www.mediafire.com/file/lfffkce3kmn5e8w/DiscordWebhookClient-win32-x64.zip/file) is another ElectronJS desktop app that lets you quickly send messages on Discord through webhooks. It supports basic messages as well as embeds with links, pictures and more.
