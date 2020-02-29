@@ -19,3 +19,12 @@ Below are linked my own creations, that I develop in my free time.
 
 ### Webline
 [Webline](/webline) is a web based terminal with lots of useful functions, like image to base64 conversion, client data fetching and much more!
+
+## Chrome extensions
+I've also made two Chrome extensions that you might find useful. To install them, unzip the downloaded file, and then browse to chrome://extensions. Activate developer mode, and then click "load unpacked". You can then browse to the unziped folder and select it in order to load the extension.
+
+### Password Input Displayer
+[Password Input Displayer](https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/PasswordInputDisplayer.zip) let's you easily check if the password you typed in a password field is correct. Just right-click the input field, and click "Show Password" to display it.
+
+### Web Image Converter
+[Web Image Converter](https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/web-image-converter.zip) let's you convert images to PNG or JPG simply by right clicking images you find online, and pressing convert. It's as easy as that!
