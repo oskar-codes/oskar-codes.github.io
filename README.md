@@ -20,6 +20,7 @@ Below are linked my own creations, that I develop in my free time.
 ### Webline
 [Webline](/webline) is a web based terminal with lots of useful functions, like image to base64 conversion, client data fetching and much more!
 <hr>
+
 ## Chrome extensions
 I've also made two Chrome extensions that you might find useful. To install them, unzip the downloaded file, and then browse to chrome://extensions. Activate developer mode, and then click "load unpacked". You can then browse to the unziped folder and select it in order to load the extension.
 ### Web Image Converter
