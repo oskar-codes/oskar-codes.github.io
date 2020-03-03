@@ -27,3 +27,6 @@ I've also made two Chrome extensions that you might find useful. To install them
 
 ### Password Input Displayer
 [Password Input Displayer](https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/PasswordInputDisplayer.zip) let's you easily check if the password you typed in a password field is correct. Just right-click the input field, and click "Show Password" to display it.
+
+### Deep Fryer
+[Deep Fryer](https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/deep-fryer.zip) let's you toggle a DeepFry filter on any web page, because why not!
