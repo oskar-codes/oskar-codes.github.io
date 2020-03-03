@@ -24,6 +24,7 @@ Below are linked my own creations, that I develop in my free time.
 
 ## Chrome extensions
 I've also made two Chrome extensions that you might find useful. To install them, unzip the downloaded file, and then browse to chrome://extensions. Activate developer mode, and then click "load unpacked". You can then browse to the unziped folder and select it in order to load the extension.
+
 <!--### Web Image Converter-->
 [Web Image Converter](https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/web-image-converter.zip) let's you convert images to PNG or JPG simply by right clicking images you find online, and pressing convert. It's as easy as that!
 
