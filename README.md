@@ -10,6 +10,7 @@ Below are linked my own creations, that I develop in my free time.
 ### Discord Webhook Client
 [Discord Webhook Client](http://www.mediafire.com/file/lfffkce3kmn5e8w/DiscordWebhookClient-win32-x64.zip/file) is another ElectronJS desktop app that lets you quickly send messages on Discord through webhooks. It supports basic messages as well as embeds with links, pictures and more.
 <hr>
+
 ## Web apps
 ### Tile Swap
 [Tile Swap](/tile-swap) is a little puzzle game with random generation, which means there's an infinite amount of puzzles for you to solve!
