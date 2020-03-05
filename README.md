@@ -4,7 +4,8 @@ Below are linked my own creations, that I develop in my free time.
 
 # My projects
 <details><summary>
-  # Desktop Apps
+  
+  ## Desktop Apps
 </summary>
 <p>
 
