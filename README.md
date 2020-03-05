@@ -3,13 +3,18 @@ I’m a 15 years old web and game developer based in Zurich, Switzerland. I’m 
 Below are linked my own creations, that I develop in my free time.
 
 # My projects
-## Desktop Apps
+<details><summary>Desktop Apps</summary>
+<p>
+
+<!--## Desktop Apps-->
 <!--### Notes app-->
 [Notes app](https://www.mediafire.com/file/4bxkfdjo39megu0/Notes-win32-x64.zip/file) is a simple note manager made using ElectronJS. It lets you easily create and edit notes, with an advanced rich text editor.
 
 <!--### Discord Webhook Client-->
 [Discord Webhook Client](http://www.mediafire.com/file/lfffkce3kmn5e8w/DiscordWebhookClient-win32-x64.zip/file) is another ElectronJS desktop app that lets you quickly send messages on Discord through webhooks. It supports basic messages as well as embeds with links, pictures and more.
 <hr>
+</p>
+</details>
 
 ## Web apps
 <!--### Tile Swap-->
