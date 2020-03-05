@@ -3,7 +3,9 @@ I’m a 15 years old web and game developer based in Zurich, Switzerland. I’m 
 Below are linked my own creations, that I develop in my free time.
 
 # My projects
-<details><summary># Desktop Apps</summary>
+<details><summary>
+  # Desktop Apps
+</summary>
 <p>
 
 <!--## Desktop Apps-->
