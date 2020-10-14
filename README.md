@@ -13,7 +13,7 @@ I also write quite on bit on [dev.to](https://dev.to/oskarcodes).
 ## Web apps
 [Search By Lyrics](/search-by-lyrics) lets you enter a part of a song's lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!
 
-[ASCII Converter] allows you, as the name says, to instantly convert images to ASCII text.
+[ASCII Converter](/ascii-converter) allows you, as the name says, to instantly convert images to ASCII text.
 
 [Web chat](/web-chat) is a prototype showing how you can use the realtime database in Google's Firebase service to host data for a messaging web app. This chat features a global room where anyone can chat, and a private room creation feature. Just click the room name on the top left of your screen and start chatting privately.
 
