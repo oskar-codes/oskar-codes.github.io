@@ -15,6 +15,8 @@ I also write quite on bit on [dev.to](https://dev.to/oskarcodes).
 
 [ASCII Converter](/ascii-converter) allows you, as the name says, to instantly convert images to ASCII text.
 
+[Chopsticks Game](/chopsticks-game) is an online multiplayer version of the famous [Chopsticks](https://en.wikipedia.org/wiki/Chopsticks_(hand_game)) hand game.
+
 [Web chat](/web-chat) is a prototype showing how you can use the realtime database in Google's Firebase service to host data for a messaging web app. This chat features a global room where anyone can chat, and a private room creation feature. Just click the room name on the top left of your screen and start chatting privately.
 
 [Tile Swap](/tile-swap) is a little puzzle game with random generation, which means there's an infinite amount of puzzles for you to solve!
