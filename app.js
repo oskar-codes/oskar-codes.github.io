@@ -13,7 +13,7 @@ let app = new Vue({
         content: `
           <h1>Oskar Codes</h1>
           <p>I’m a 16 year old web and game developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.itch.io">here</a>.
-Below are linked my own creations, that I develop in my free time.
+On this site are listed my own creations, that I develop in my free time.
 I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
         `
       },
