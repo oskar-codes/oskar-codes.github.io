@@ -1,0 +1,215 @@
+:root {
+  --col-background: #161819;
+  --col-lime: #05ffc5;
+  --col-green: #01af95;
+  --col-pink: #ff71ce;
+  --col-purple: #b967ff;
+  --border-color: var(--col-lime) var(--col-pink) var(--col-pink) var(--col-lime)
+}
+
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+  user-select: none;
+}
+
+body, html {
+  background-color: var(--col-background);
+  color: white;
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: 3px solid var(--col-green);
+  border-color: var(--border-color);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  color: var(--col-green);
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+a {
+  color: var(--col-green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--col-lime);
+}
+
+hr {
+  border-style: solid;
+}
+
+.collapsable {
+  overflow: hidden;
+  width: 100%;
+  transition: height 0.3s ease;
+}
+
+#nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100vh;
+  border: 3px solid var(--col-green);
+  z-index: 3;
+  background-color: var(--col-background);
+}
+
+#nav div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#nav button {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  font-size: 32px;
+}
+
+#nav button i {
+  transition: opacity 0.2s ease;
+}
+
+#nav button i::before {
+  background: linear-gradient(135deg, var(--col-lime), var(--col-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: initial;
+}
+
+#nav button:hover i {
+  opacity: 0;
+}
+
+#nav button::after {
+  content: attr(data-name);
+  color: var(--col-green);
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: var(--col-lime);
+}
+
+#nav button:hover::after {
+  opacity: 1;
+}
+
+#desktop {
+  position: fixed;
+  left: 100px;
+  top: 0;
+  width: calc(100vw - 100px);
+  height: 100vh;
+}
+
+#desktop .window {
+  border-radius: 5px;
+  border: 3px solid var(--col-purple);
+  border-color: var(--border-color);
+  position: absolute;
+  left: 0px; top: 0px;
+  background-color: var(--col-background);
+  width: 800px;
+  height: 600px;
+}
+
+#desktop .window .window-top {
+  border-bottom: 1px solid var(--col-purple);
+  height: 24px;
+}
+
+#desktop .window .window-top span {
+  display: inline-block;
+  margin: 3px 7px;
+  color: var(--col-purple);
+}
+
+#desktop .window .window-top button {
+  float: right;
+  margin: 0;
+  border: none;
+  border-left: 1px solid var(--col-purple);
+  color: var(--col-purple);
+  padding: 3px;
+  border-radius: 0;
+}
+
+#desktop .window .window-content {
+  height: calc(100% - 24px);
+  padding: 24px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#desktop #background-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--col-green);
+  user-select: none;
+  text-align: center;
+}
+
+#desktop #background-title h1 {
+  margin-bottom: 5px;
+}
+
+#projects h2 {
+  cursor: pointer;
+}
+
+#social .window-content div {
+  font-size: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+ 
+::-webkit-scrollbar {
+  display: none;
+}
+
+::selection {
+  color: var(--col-green);
+}
+
+
+@media only screen and (max-width: 800px) {
+  #nav {
+    top: unset; bottom: 0px;
+    width: 100%;
+    height: 100px;
+    white-space: nowrap;
+  }
+  #desktop {
+    width: 100vw;
+    height: calc(100vw - 100px);
+    left: 0;
+  }
+  #desktop .window {
+    width: 100vw;
+    height: calc(100vh - 100px);
+    transform: none !important;
+    left: 0px;
+  }
+  #social .window-content div {
+    width: min-content;
+  }
+}
