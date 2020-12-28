@@ -12,7 +12,7 @@ let app = new Vue({
         coords: {x: midX - 50, y: midY - 50},
         content: `
           <h1>Oskar Codes</h1>
-          <p>I’m a 16 year old web and game developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.itch.io">here</a>.
+          <p>I’m Oskar Zanota, a 16 year old web and game developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.itch.io">here</a>.
 On this site are listed my own creations, that I develop in my free time.
 I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
         `
@@ -23,6 +23,8 @@ I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
         isMoving: false,
         coords: {x: midX - 25, y: midY - 25},
         content: `
+          <hr>
+
           <h2>Desktop Apps</h2>
           <div class="collapsable">
             <p><a href="http://www.mediafire.com/file/4bxkfdjo39megu0/Notes-win32-x64.zip/file">Notes app</a> is a simple note manager made using ElectronJS. It lets you easily create and edit notes, with an advanced rich text editor.</p>
@@ -121,9 +123,8 @@ document.querySelectorAll('#nav div button').forEach((btn) => {
   });
 });
 
+// manage collapsables
 document.querySelectorAll('.collapsable').forEach((div) => {
-
-  //div.setAttribute('data-height', div.style)
   div.style.height = '0px';
   const header = div.previousElementSibling;
   header.addEventListener('click', (e) => {
@@ -139,4 +140,68 @@ function moveToFront(name) {
   const index = app.zOrder.indexOf(name);
   app.zOrder.splice(index, 1);
   app.zOrder.push(name);
+}
+
+String.prototype.replaceAt = function(index, replacement) {
+  return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+}
+
+const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2)
+
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+
+// const points = [];
+// let index = 0;
+
+SimpleCanvas.setupCanvas(ctx);
+SimpleCanvas.update = () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  SimpleCanvas.cls();
+  
+  for (let x = 0; x < window.innerWidth; x += 50) {
+    for (let y = 0; y < window.innerHeight; y += 50) {
+      
+      let vectorX = (x - SimpleCanvas.mouse()[0]) * 0.06;
+      let vectorY = (y - SimpleCanvas.mouse()[1]) * 0.06;
+
+      const lime = tinycolor('#05ffc5');
+      const pink = tinycolor('#ff71ce');
+
+      const blend = tinycolor.mix(pink, lime, amount = dist(SimpleCanvas.mouse()[0], SimpleCanvas.mouse()[1], x, y) / 8);
+      
+      SimpleCanvas.line(x, y, x + vectorX, y + vectorY, blend, 3);
+    }
+  }
+  
+  /* index += 0.05;
+  index = SimpleCanvas.mouse()[0] * SimpleCanvas.mouse()[1] / window.innerWidth * 0.01
+  points.push([Math.cos(index) * 200 + midX + 50, Math.sin(index) * 100 + midY, 20, '#b967ffff']);
+  points.push([Math.sin(index) * 200 + midX + 50, Math.cos(index) * 100 + midY, 20, '#01af95ff']);
+  points.push([Math.cos(index) * 200 + midX + 50, Math.cos(index) * 100 + midY, 20, '#05ffc5ff']);
+  points.push([Math.sin(index) * 200 + midX + 50, Math.sin(index) * 100 + midY, 20, '#ff71ceff']);
+  points.forEach((point, i) => {
+    point[2] -= 0.3;
+
+    let col = point[3];
+    let alpha = parseInt(col.substring(7,9), 16);
+    alpha -= 5;
+    alpha = Math.max(alpha, 0);
+    if (alpha === 0) console.log("YES");
+    alpha = alpha.toString(16);
+    alpha = alpha.padStart(2, "0");
+    col = col.replaceAt(7, alpha)
+    
+    point[3] = col;
+    //if (i === 0) console.log(point[3]);
+    
+
+    if (point[2] <= 0) {
+      points.splice(i, 1);
+      return
+    }
+    SimpleCanvas.circfill(...point);
+  }) */
 }
