@@ -205,3 +205,7 @@ SimpleCanvas.update = () => {
     SimpleCanvas.circfill(...point);
   }) */
 }
+
+window.setTimeout(() => {
+  document.body.style.filter = "unset";
+}, 100);
