@@ -187,8 +187,10 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
     
           background.line(x, y, x + vectorX, y + vectorY, blend, 3);
 
-          const v = distance / 20
-          background.rect(x + v / 2, y + v / 2, v / 2, v / 2, blend)
+          const v = distance / 20;
+
+          background.rect(x + v / 2, y + v / 2, v / 2, v / 2, blend);
+          // background.rect(x + vectorX * -0.4, y + vectorY * -0.4, v / 2, v / 2, blend)
           // background.rect(x - v / 2, y - v / 2, v, v, blend)
         }
       }
@@ -210,8 +212,8 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
 		{ x: 450, y: 300 },
 		{ x: 500, y: 300 }
   ]
-	let dx = 1
-	let dy = 0
+	let dx = 1;
+	let dy = 0;
   
   const apple = {};
   setApple();
@@ -354,6 +356,13 @@ window.addEventListener('load', (e) => {
     document.querySelector('#app').style.filter = 'unset';
     div.style.display = 'none';
   }, messages.length * 1000);
+
+  window.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+      document.querySelector('#app').style.filter = 'unset';
+      div.style.display = 'none';
+    }
+  })
 });
 
 function shuffle(array) {
