@@ -7,18 +7,21 @@ let app = new Vue({
     windowState: {
       home: {
         name: 'Home',
+        icon: 'fa-home',
         show: true,
         isMoving: false,
         coords: {x: midX - 50, y: midY - 50},
         content: `
           <h1>Oskar Codes</h1>
-          <p>I’m Oskar Zanota, a 16 year old web and game developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.itch.io">here</a>.
+          <p>I’m Oskar Zanota, a 16 year old web and game developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.ch">here</a>.
 On this site are listed my own creations, that I develop in my free time.
 I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
+          <p>And as a bonus, you can play <a href="#" onclick="openApp('snake');">snake</a> on this website!</p>
         `
       },
       projects: {
         name: 'Projects',
+        icon: 'fa-project-diagram',
         show: false,
         isMoving: false,
         coords: {x: midX - 25, y: midY - 25},
@@ -58,6 +61,7 @@ I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
       },
       social: {
         name: 'Social',
+        icon: 'fa-share-alt',
         show: false,
         isMoving: false,
         coords: {x: midX, y: midY},
@@ -69,9 +73,19 @@ I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
             <a href="https://github.com/oskar-codes"><i class="fab fa-github"></i></a>
           </div>
         `
+      },
+      snake: {
+        name: 'Snake',
+        icon: 'fa-gamepad',
+        show: false,
+        isMoving: false,
+        coords: {x: midX + 25, y: midY},
+        content: `
+          <canvas></canvas>
+        `
       }
     },
-    zOrder: ['home', 'projects', 'social']
+    zOrder: ['home', 'projects', 'social', 'snake']
   }
 });
 
@@ -116,12 +130,14 @@ window.addEventListener('mousemove', (e) => {
 document.querySelectorAll('#nav div button').forEach((btn) => {
   btn.addEventListener('click', (evt) => {
     const name = btn.getAttribute('data-name').toLowerCase();
-
-    app.windowState[name].show = true;
-
-    moveToFront(name);
+    openApp(name);
   });
 });
+
+function openApp(name) {
+  app.windowState[name.toLowerCase()].show = true;
+  moveToFront(name.toLowerCase());
+}
 
 // manage collapsables
 document.querySelectorAll('.collapsable').forEach((div) => {
@@ -142,70 +158,178 @@ function moveToFront(name) {
   app.zOrder.push(name);
 }
 
-String.prototype.replaceAt = function(index, replacement) {
-  return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-}
+const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
 
-const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2)
+(() => {
+  const canvas = document.querySelector('#background-canvas');
+  const ctx = canvas.getContext('2d');
+  const background = SimpleCanvas.setupCanvas(ctx);
+  background.update = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    background.cls();
+    
+    if (window.innerWidth > 800) {
+      for (let x = 0; x < window.innerWidth; x += 50) {
+        for (let y = 0; y < window.innerHeight; y += 50) {
+          
+          let vectorX = (x - background.mouse()[0]) * 0.06;
+          let vectorY = (y - background.mouse()[1]) * 0.06;
+    
+          const lime = tinycolor('#05ffc5');
+          const pink = tinycolor('#ff71ce');
 
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+          const distance = dist(background.mouse()[0], background.mouse()[1], x, y);
+    
+          const blend = tinycolor.mix(pink, lime, amount = distance / 8);
+    
+          background.line(x, y, x + vectorX, y + vectorY, blend, 3);
 
-// const points = [];
-// let index = 0;
-
-SimpleCanvas.setupCanvas(ctx);
-SimpleCanvas.update = () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  
-  SimpleCanvas.cls();
-  
-  for (let x = 0; x < window.innerWidth; x += 50) {
-    for (let y = 0; y < window.innerHeight; y += 50) {
-      
-      let vectorX = (x - SimpleCanvas.mouse()[0]) * 0.06;
-      let vectorY = (y - SimpleCanvas.mouse()[1]) * 0.06;
-
-      const lime = tinycolor('#05ffc5');
-      const pink = tinycolor('#ff71ce');
-
-      const blend = tinycolor.mix(pink, lime, amount = dist(SimpleCanvas.mouse()[0], SimpleCanvas.mouse()[1], x, y) / 8);
-      
-      SimpleCanvas.line(x, y, x + vectorX, y + vectorY, blend, 3);
+          const v = distance / 20
+          background.rect(x + v / 2, y + v / 2, v / 2, v / 2, blend)
+          // background.rect(x - v / 2, y - v / 2, v, v, blend)
+        }
+      }
     }
   }
+})();
+
+(() => {
+  const canvas = document.querySelector('.window#snake canvas');
+  const ctx = canvas.getContext('2d');
+  const interface = SimpleCanvas.setupCanvas(ctx);
+  canvas.width = 794;
+  canvas.height = 570;
+
+  let x = 500;
+	let y = 300;
+	const snake = [
+		{ x: 400, y: 300 },
+		{ x: 450, y: 300 },
+		{ x: 500, y: 300 }
+  ]
+	let dx = 1
+	let dy = 0
   
-  /* index += 0.05;
-  index = SimpleCanvas.mouse()[0] * SimpleCanvas.mouse()[1] / window.innerWidth * 0.01
-  points.push([Math.cos(index) * 200 + midX + 50, Math.sin(index) * 100 + midY, 20, '#b967ffff']);
-  points.push([Math.sin(index) * 200 + midX + 50, Math.cos(index) * 100 + midY, 20, '#01af95ff']);
-  points.push([Math.cos(index) * 200 + midX + 50, Math.cos(index) * 100 + midY, 20, '#05ffc5ff']);
-  points.push([Math.sin(index) * 200 + midX + 50, Math.sin(index) * 100 + midY, 20, '#ff71ceff']);
-  points.forEach((point, i) => {
-    point[2] -= 0.3;
+  const apple = {};
+  setApple();
+  let counter = 0;
 
-    let col = point[3];
-    let alpha = parseInt(col.substring(7,9), 16);
-    alpha -= 5;
-    alpha = Math.max(alpha, 0);
-    if (alpha === 0) console.log("YES");
-    alpha = alpha.toString(16);
-    alpha = alpha.padStart(2, "0");
-    col = col.replaceAt(7, alpha)
-    
-    point[3] = col;
-    //if (i === 0) console.log(point[3]);
-    
+  interface.update = (delay) => {
+    if (app.windowState.snake.show) {
 
-    if (point[2] <= 0) {
-      points.splice(i, 1);
-      return
+      const parentRect = canvas.parentNode.getBoundingClientRect();
+      canvas.width = parentRect.width;
+      canvas.height = parentRect.height;
+
+      const fps = 1/delay;
+      counter++;
+
+      if (interface.btn('LEFT')) {
+        dx = -1; dy = 0;
+      }
+      if (interface.btn('RIGHT')) {
+        dx = 1; dy = 0;
+      }
+      if (interface.btn('DOWN')) {
+        dx = 0; dy = 1;
+      }
+      if (interface.btn('UP')) {
+        dx = 0; dy = -1;
+      }
+
+      if (counter > fps * 200) {
+        counter = 0;
+
+        x += dx * 50;
+        y += dy * 50;
+
+        if (x > canvas.width) x = 0;
+        if (y > canvas.height) y = 0;
+        if (x < 0) x = canvas.width - canvas.width % 50;
+        if (y < 0) y = canvas.height - canvas.height % 50;
+
+        if (x === apple.x && y === apple.y) {
+          setApple();
+        } else {
+          snake.splice(0,1);
+        }
+        snake.push({
+          x: x,
+          y: y
+        });
+      }
+
+      let dead = false;
+      for (let i = 0; i < snake.length - 1; i++) {
+        const tile = snake[i];
+        if (tile.x === x && tile.y === y) {
+          dead = true;
+        }
+      }
+      if (dead) {
+        snake.length = 0;
+        x = 500;
+        y = 300;
+        dx = 1;
+        dy = 0;
+        for (let i = 0; i < 3; i++) {
+          snake.push({
+            x: 400 + i * 50,
+            y: 300
+          });
+        }
+        setApple();
+      }
+
+      interface.cls();
+      for (let i = 0; i < snake.length; i++) {
+        const p = snake[i];
+        interface.rectfill(p.x, p.y, 47, 47, '#05ffc5');
+      }
+      interface.rectfill(apple.x, apple.y, 47, 47, '#b967ff');
     }
-    SimpleCanvas.circfill(...point);
-  }) */
-}
+  }
 
-window.setTimeout(() => {
-  document.body.style.filter = "unset";
-}, 100);
+  function setApple() {
+    const appleX = Math.floor(Math.random() * canvas.width);
+    const appleY = Math.floor(Math.random() * (canvas.height - 50));
+    apple.x = appleX - appleX % 50;
+    apple.y = appleY - appleY % 50;
+  }
+})();
+
+
+window.addEventListener('load', (e) => {
+  const messages = ['Booting snake', 'Loading OS', 'Drawing icons', 'Installing apps', 'Refactoring legacy code', 'Clearing screen', 'Accelerating disk', 'Encrypting files', 'Aligning background elements'];
+  shuffle(messages);
+  messages.push('Finally starting');
+
+  const div = document.querySelector('#terminal');
+  let delay = 0;
+
+  messages.forEach((msg) => {
+    window.setTimeout(() => {
+      div.innerHTML += `<span class="loading">${msg}...</span><br>`;
+    }, delay);
+    delay += 600 + Math.random() * 400;
+  });
+
+  window.setTimeout(() => {
+    document.querySelector('#app').style.filter = 'unset';
+    div.style.display = 'none';
+  }, messages.length * 1000);
+});
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
