@@ -135,8 +135,9 @@ document.querySelectorAll('#nav div button').forEach((btn) => {
 });
 
 function openApp(name) {
-  app.windowState[name.toLowerCase()].show = true;
-  moveToFront(name.toLowerCase());
+  name = name.toLowerCase();
+  app.windowState[name].show = true;
+  moveToFront(name);
 }
 
 // manage collapsables
@@ -215,6 +216,31 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
   const apple = {};
   setApple();
   let counter = 0;
+  const directions = {
+    left: 2,
+    up: 8,
+    right: 4,
+    down: 16
+  }
+  const hammertime = new Hammer(canvas);
+  hammertime.on('pan', function(ev) {
+    if (window.innerWidth < 800) {
+      const dir = ev.direction;
+      if (dir === directions.left) {
+        dx = -1; dy = 0;
+      }
+      if (dir === directions.right) {
+        dx = 1; dy = 0;
+      }
+      if (dir === directions.down) {
+        dx = 0; dy = 1;
+      }
+      if (dir === directions.up) {
+        dx = 0; dy = -1;
+      }
+    }
+  });
+  hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 
   interface.update = (delay) => {
     if (app.windowState.snake.show) {
@@ -226,17 +252,19 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
       const fps = 1/delay;
       counter++;
 
-      if (interface.btn('LEFT')) {
-        dx = -1; dy = 0;
-      }
-      if (interface.btn('RIGHT')) {
-        dx = 1; dy = 0;
-      }
-      if (interface.btn('DOWN')) {
-        dx = 0; dy = 1;
-      }
-      if (interface.btn('UP')) {
-        dx = 0; dy = -1;
+      if (window.innerWidth >= 800) {
+        if (interface.btn('LEFT')) {
+          dx = -1; dy = 0;
+        }
+        if (interface.btn('RIGHT')) {
+          dx = 1; dy = 0;
+        }
+        if (interface.btn('DOWN')) {
+          dx = 0; dy = 1;
+        }
+        if (interface.btn('UP')) {
+          dx = 0; dy = -1;
+        }
       }
 
       if (counter > fps * 200) {
@@ -296,8 +324,14 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
     const appleX = Math.floor(Math.random() * canvas.width);
     const appleY = Math.floor(Math.random() * (canvas.height - 50));
     apple.x = appleX - appleX % 50;
-    apple.y = appleY - appleY % 50;
+    apple.y = appleY - appleY % 50; 
   }
+
+  document.querySelector('button[data-name="Snake"]').addEventListener('click', (e) => {
+    if (window.innerWidth < 800) {
+      setApple();
+    }
+  });
 })();
 
 
