@@ -13,9 +13,7 @@
     <div id="app">
       <div id="nav">
         <div>
-          <button data-name="Home"><i class="fas fa-home"></i></button>
-          <button data-name="Projects"><i class="fas fa-project-diagram"></i></button>
-          <button data-name="Social"><i class="fas fa-share-alt"></i></button>
+          <button v-for="window in windowState" :data-name="window.name"><i :class="'fas ' + window.icon"></i></button>
         </div>
       </div>
 
@@ -39,10 +37,12 @@
 
       </div>
 
+      <canvas id="background-canvas"></canvas>
     </div>
-
-    <canvas></canvas>
       
+
+    <div id="terminal"></div>
+
     <script src="tinycolor.js"></script>
     <script src="simple-canvas.js"></script>
     <script src="app.js"></script>
