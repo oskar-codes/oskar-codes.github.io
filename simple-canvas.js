@@ -1,16 +1,19 @@
-window.SimpleCanvas = {
-  init: () => {},
-  update: () => {}
-};
+SimpleCanvas = {};
 
 SimpleCanvas.setupCanvas = (ctx) => {
+
+  const interface = {
+    init: () => {},
+    update: () => {}
+  };
+
   function loop(timestamp) {
     if (lastRender === 0) {
-      SimpleCanvas.init();
+      interface.init();
     }
     var progress = timestamp - lastRender
   
-    SimpleCanvas.update(progress);
+    interface.update(progress);
   
     lastRender = timestamp
     window.requestAnimationFrame(loop)
@@ -24,7 +27,7 @@ SimpleCanvas.setupCanvas = (ctx) => {
   
   /*** GLOBAL FUNCTIONS ***/
 
-  SimpleCanvas.btn = (k) => {
+  interface.btn = (k) => {
     if (!!k) {
       try {
         return KEY[k][1];
@@ -42,20 +45,20 @@ SimpleCanvas.setupCanvas = (ctx) => {
       return arr;
     }
   }
-  SimpleCanvas.cls = (c) => !!c ? rectfill(0,0,ctx.canvas.width,ctx.canvas.height,c) : ctx.clearRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);
-  SimpleCanvas.rect = function(a,b,c,d,e,f) {
+  interface.cls = (c) => !!c ? rectfill(0,0,ctx.canvas.width,ctx.canvas.height,c) : ctx.clearRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);
+  interface.rect = function(a,b,c,d,e,f) {
     e = (!!e ? e : "#000000");
     f = (!!f ? f : 1);
     ctx.strokeStyle = e;
     ctx.lineWidth = f;
     ctx.strokeRect(a,b,c,d);
   }
-  SimpleCanvas.rectfill = function(a,b,c,d,e) {
+  interface.rectfill = function(a,b,c,d,e) {
     e = (!!e ? e : "#000000");
     ctx.fillStyle = e;
     ctx.fillRect(a,b,c,d);
   }
-  SimpleCanvas.circ = function(x,y,r,c,s) {
+  interface.circ = function(x,y,r,c,s) {
     c = (!!c ? c : "#000000");
     s = (!!s ? s : 1);
     ctx.beginPath();
@@ -64,14 +67,14 @@ SimpleCanvas.setupCanvas = (ctx) => {
     ctx.arc(x, y, r, 0, 2 * Math.PI);
     ctx.stroke();
   }
-  SimpleCanvas.circfill = function(x,y,r,c) {
+  interface.circfill = function(x,y,r,c) {
     c = (!!c ? c : "#000000");
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2 * Math.PI);
     ctx.fillStyle = c;
     ctx.fill();
   }
-  SimpleCanvas.line = function(x1,y1,x2,y2,c,s) {
+  interface.line = function(x1,y1,x2,y2,c,s) {
     c = (!!c ? c : "#000000");
     s = (!!s ? s : 1);
     ctx.beginPath();
@@ -81,7 +84,7 @@ SimpleCanvas.setupCanvas = (ctx) => {
     ctx.lineWidth = s;
     ctx.stroke();
   }
-  SimpleCanvas.text = function(t,x,y,c,s,f) {
+  interface.text = function(t,x,y,c,s,f) {
     c = (!!c ? c : "#000000");
     s = (!!s ? s : 16);
     f = (!!f ? f : "sans-serif");
@@ -89,29 +92,29 @@ SimpleCanvas.setupCanvas = (ctx) => {
     ctx.fillStyle = c;
     ctx.fillText(t,x,y);
   }
-  SimpleCanvas.textwidth = function(t, s, f) {
+  interface.textwidth = function(t, s, f) {
     s = (!!s ? s : 16);
     f = (!!f ? f : "sans-serif");
     ctx.font = s + "px " + f;
     var metrics = ctx.measureText(t);
     return metrics.width;
   }
-  SimpleCanvas.pset = function(x,y,c) {
+  interface.pset = function(x,y,c) {
     c = (!!c ? c : "#000000");
     ctx.fillStyle = c;
     ctx.fillRect(x,y,1,1);
   }
-  SimpleCanvas.pget = function(x,y,t) {
+  interface.pget = function(x,y,t) {
     t = (!!t ? t : 0);
     var data = ctx.getImageData(x,y,1,1).data;
-    data[3]/=255;
+    data[3] /= 255;
     switch (t) {
       case 0: return `rgba(${data[0]},${data[1]},${data[2]},${data[3]})`;
       case 1: return RGBAToHex(data[0],data[1],data[2],data[3]);
       case 2: return [...data];
     }
   }
-  SimpleCanvas.img = function(src,x,y,w,h) {
+  interface.img = function(src,x,y,w,h) {
     var img = document.querySelector("img[src='"+ src +"']")
 
     if (!!img) {
@@ -148,7 +151,7 @@ SimpleCanvas.setupCanvas = (ctx) => {
     }
   }
   const attr = (e,n) => e.getAttribute("data-"+n) === undefined ? undefined : parseInt(e.getAttribute("data-"+n));
-  SimpleCanvas.mouse = function() {
+  interface.mouse = function() {
     return [mouseX, mouseY];
   }
   var mouseX = 0;
@@ -158,13 +161,13 @@ SimpleCanvas.setupCanvas = (ctx) => {
     mouseX = e.clientX - rect.left
     mouseY = e.clientY - rect.top;
   });
-  SimpleCanvas.mousedown = (id) => (id === 0 ? lmbDown : (id === 1 ? (rmbDown && prevContextMenus) : lmbDown));
-  SimpleCanvas.preventcontextmenu = () => { prevContextMenus = true; }
-  SimpleCanvas.cursor = (t) => {
+  interface.mousedown = (id) => (id === 0 ? lmbDown : (id === 1 ? (rmbDown && prevContextMenus) : lmbDown));
+  interface.preventcontextmenu = () => { prevContextMenus = true; }
+  interface.cursor = (t) => {
     t = (!!t ? t : "auto");
     document.documentElement.style.cursor = t;
   }
-  SimpleCanvas.getscrolldelta = (d) => d === 0 ? yScroll : (d === 1 ? xScroll : 0);
+  interface.getscrolldelta = (d) => d === 0 ? yScroll : (d === 1 ? xScroll : 0);
 
   /*** HANDLE INPUT ***/
   var KEY = {
@@ -258,4 +261,6 @@ SimpleCanvas.setupCanvas = (ctx) => {
 
     return "#" + r + g + b + a;
   }
+
+  return interface;
 }
