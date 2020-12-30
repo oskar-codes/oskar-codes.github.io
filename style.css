@@ -19,7 +19,8 @@ body, html {
   margin: 0;
 }
 
-body {
+#app {
+  height: 100%;
   filter: opacity(0) blur(100px) invert(1) brightness(5);
   transition: filter 2s ease;
 }
@@ -53,14 +54,14 @@ hr {
   border-color: var(--col-purple);
 }
 
-canvas {
+#background-canvas {
   pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -3;
 }
 
 .collapsable {
@@ -174,6 +175,11 @@ canvas {
   overflow-y: scroll;
 }
 
+#desktop .window#snake .window-content {
+  padding: 0;
+  overflow-y: hidden;
+}
+
 #desktop #background-title {
   position: absolute;
   top: 50%;
@@ -182,6 +188,8 @@ canvas {
   color: var(--col-green);
   user-select: none;
   text-align: center;
+  display: none;
+  z-index: -2;
 }
 
 #desktop #background-title h1 {
@@ -208,6 +216,34 @@ canvas {
   color: var(--col-green);
 }
 
+#terminal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  z-index: 10;
+}
+
+
+/* .loading::after {
+  content: '.';
+  animation: dots 2s infinite;
+}
+
+@keyframes dots {
+  30% {
+    content: '.';
+  }
+  50% {
+    content: '..';
+  }
+  100% {
+    content: '...';
+  }
+} */
 
 @media only screen and (max-width: 800px) {
   #nav {
@@ -229,5 +265,8 @@ canvas {
   }
   #social .window-content div {
     width: min-content;
+  }
+  #desktop #background-title {
+    display: block;
   }
 }
