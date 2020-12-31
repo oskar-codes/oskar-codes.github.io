@@ -226,20 +226,18 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
   }
   const hammertime = new Hammer(canvas);
   hammertime.on('pan', function(ev) {
-    if (window.innerWidth < 800) {
-      const dir = ev.direction;
-      if (dir === directions.left) {
-        dx = -1; dy = 0;
-      }
-      if (dir === directions.right) {
-        dx = 1; dy = 0;
-      }
-      if (dir === directions.down) {
-        dx = 0; dy = 1;
-      }
-      if (dir === directions.up) {
-        dx = 0; dy = -1;
-      }
+    const dir = ev.direction;
+    if (dir === directions.left) {
+      dx = -1; dy = 0;
+    }
+    if (dir === directions.right) {
+      dx = 1; dy = 0;
+    }
+    if (dir === directions.down) {
+      dx = 0; dy = 1;
+    }
+    if (dir === directions.up) {
+      dx = 0; dy = -1;
     }
   });
   hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
