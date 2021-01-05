@@ -19,6 +19,10 @@ body, html {
   margin: 0;
 }
 
+p {
+  font-size: 16px;
+}
+
 #app {
   height: 100%;
   filter: opacity(0) blur(100px) invert(1) brightness(5);
@@ -244,6 +248,36 @@ hr {
     content: '...';
   }
 } */
+
+.article {
+  border-radius: 5px;
+  /* border: 3px solid var(--col-purple); */
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #202224;
+}
+
+#articles .window-content a:nth-child(1) .article {
+  margin-top: 0;
+}
+
+#articles .window-content a:last-child .article {
+  margin-bottom: 0;
+}
+
+.article p, .article i {
+  color: white;
+}
+
+.article i {
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+
+.article h2 {
+  margin-top: 1px;
+}
 
 @media only screen and (max-width: 800px) {
   #nav {
