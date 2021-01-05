@@ -13,10 +13,9 @@ let app = new Vue({
         coords: {x: midX - 50, y: midY - 50},
         content: `
           <h1>Oskar Codes</h1>
-          <p>I’m Oskar Zanota, a 16 year old web and game developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.ch">here</a>.
-On this site are listed my own creations, that I develop in my free time.
-I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
-          <p>And as a bonus, you can play <a href="#" onclick="openApp('snake');">snake</a> on this website!</p>
+          <p>I’m Oskar Zanota, a 16 year old web and game developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.ch">here</a>.</p> 
+          <p>On this site are listed my own creations, that I develop in my free time. Most of them are just random experiments using various web technologies, that I wanted to share online.</p>
+          <p>I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
         `
       },
       projects: {
@@ -59,12 +58,20 @@ I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
           <hr>
         `
       },
+      articles: {
+        name: 'Articles',
+        icon: 'fa-newspaper',
+        show: false,
+        coords: {x: midX, y: midY},
+        content: `
+        `
+      },
       social: {
         name: 'Social',
         icon: 'fa-share-alt',
         show: false,
         isMoving: false,
-        coords: {x: midX, y: midY},
+        coords: {x: midX + 25, y: midY + 25},
         content: `
           <div>
             <a href="mailto:oskar.codes@gmail.com"><i class="fas fa-envelope"></i></a>
@@ -79,15 +86,24 @@ I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
         icon: 'fa-gamepad',
         show: false,
         isMoving: false,
-        coords: {x: midX + 25, y: midY},
+        coords: {x: midX + 50, y: midY + 50},
         content: `
           <canvas></canvas>
         `
       }
     },
-    zOrder: ['home', 'projects', 'social', 'snake']
+    zOrder: []
   }
 });
+
+// Define window zOrder
+(() => {
+  for (const key in app.windowState) {
+    if (Object.hasOwnProperty.call(app.windowState, key)) {
+      app.zOrder.push(key);
+    }
+  }
+})();
 
 // Manage windows
 document.querySelectorAll('#desktop .window').forEach((win) => {
@@ -360,7 +376,9 @@ window.addEventListener('load', (e) => {
       document.querySelector('#app').style.filter = 'unset';
       div.style.display = 'none';
     }
-  })
+  });
+
+  loadArticles();
 });
 
 function shuffle(array) {
@@ -373,4 +391,28 @@ function shuffle(array) {
     array[randomIndex] = temporaryValue;
   }
   return array;
+}
+
+function loadArticles() {
+  const xml = new XMLHttpRequest();
+  xml.open('GET', 'https://dev.to/api/articles?username=oskarcodes');
+  xml.addEventListener('load', (e) => {
+    const data = JSON.parse(xml.responseText);
+    const div = document.querySelector('.window#articles .window-content');
+    for (let i = 0; i < data.length; i++) {
+      const article = data[i];
+      const html = `
+        <a href="${article.canonical_url}" target="_blank">
+          <div class="article">
+            <i>${article.readable_publish_date}</i>
+            <h2>${article.title}</h2>
+            <p>${article.description}</p>
+          </div>
+        </a>
+      `
+      div.innerHTML += html;
+    }
+  });
+
+  xml.send();
 }
