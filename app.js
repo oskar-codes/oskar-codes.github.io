@@ -39,6 +39,7 @@ let app = new Vue({
           <div class="collapsable">
             <p><a href="/search-by-lyrics">Search By Lyrics</a> lets you enter a part of a song’s lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!</p>
             <p><a href="/ascii-converter">ASCII Converter</a> allows you, as the name says, to instantly convert images to ASCII text.</p>
+            <p><a href="/web-cmd">Web CMD</a> is an online CMD tool that can control devices remotely through the internet.</p>
             <p><a href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</p>
             <p><a href="/web-chat">Web chat</a> is a prototype showing how you can use the realtime database in Google’s Firebase service to host data for a messaging web app. This chat features a global room where anyone can chat, and a private room creation feature. Just click the room name on the top left of your screen and start chatting privately.</p>
             <p><a href="/tile-swap">Tile Swap</a> is a little puzzle game with random generation, which means there’s an infinite amount of puzzles for you to solve!</p>
