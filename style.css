@@ -17,6 +17,9 @@ body, html {
   background-color: var(--col-background);
   color: white;
   margin: 0;
+}
+
+.touch, .touch body {
   height: 100%;
 }
 
