@@ -17,6 +17,7 @@ body, html {
   background-color: var(--col-background);
   color: white;
   margin: 0;
+  height: 100%;
 }
 
 p {
@@ -90,6 +91,7 @@ hr {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 #nav button {
@@ -279,12 +281,26 @@ hr {
   margin-top: 1px;
 }
 
+@media only screen and (min-width: 800px) {
+  .touch #desktop .window {
+    width: calc(100vw - 100px);
+    height: 100vh;
+    transform: none !important;
+    left: 0px;
+  }
+}
+
 @media only screen and (max-width: 800px) {
   #nav {
     top: unset; bottom: 0px;
     width: 100%;
     height: 100px;
     white-space: nowrap;
+  }
+  #nav div {
+    position: static;
+    transform: none;
+    overflow-x: scroll;
   }
   #desktop {
     width: 100vw;
@@ -300,7 +316,8 @@ hr {
   #social .window-content div {
     width: min-content;
   }
-  #desktop #background-title {
-    display: block;
-  }
+}
+
+.touch #desktop #background-title {
+  display: block;
 }
