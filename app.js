@@ -1,3 +1,8 @@
+const TOUCH = 'ontouchstart' in document.documentElement;
+if (TOUCH) {
+  document.documentElement.classList.add('touch');
+}
+
 const midX = window.innerWidth / 2;
 const midY = window.innerHeight / 2;
 
@@ -13,7 +18,8 @@ let app = new Vue({
         coords: {x: midX - 50, y: midY - 50},
         content: `
           <h1>Oskar Codes</h1>
-          <p>I’m Oskar Zanota, a 16 year old web and game developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.ch">here</a>.</p> 
+          <p>I’m Oskar Zanota, a 16 year old front-end developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.ch">here</a>.</p> 
+          <p>I mostly code in HTML, CSS, and JavaScript for web development, but I also have an interest for game development using Python and Lua.</p>
           <p>On this site are listed my own creations, that I develop in my free time. Most of them are just random experiments using various web technologies, that I wanted to share online.</p>
           <p>I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
         `
@@ -170,6 +176,14 @@ document.querySelectorAll('.collapsable').forEach((div) => {
   });
 });
 
+// Add code links to web apps
+(() => {
+  document.querySelectorAll(`p > a[href^='/']`).forEach((e) => {
+    const url = e.getAttribute('href');
+    e.parentElement.innerHTML += `<a href='https://github.com/oskar-codes${url}' target='_blank'>[code]</a>`
+  })
+})();
+
 function moveToFront(name) {
   const index = app.zOrder.indexOf(name);
   app.zOrder.splice(index, 1);
@@ -188,7 +202,7 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
     
     background.cls();
     
-    if (window.innerWidth > 800) {
+    if (!TOUCH) {
       for (let x = 0; x < window.innerWidth; x += 50) {
         for (let y = 0; y < window.innerHeight; y += 50) {
           
@@ -260,7 +274,7 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
   hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 
   interface.update = (delay) => {
-    if (app.windowState.snake.show) {
+    if (app.windowState.snake.show && app.zOrder[app.zOrder.length - 1] === 'snake') {
 
       const parentRect = canvas.parentNode.getBoundingClientRect();
       canvas.width = parentRect.width;
