@@ -21,7 +21,7 @@ let app = new Vue({
           <p>I’m Oskar Zanota, a 16 year old front-end developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.ch">here</a>.</p> 
           <p>I mostly code in HTML, CSS, and JavaScript for web development, but I also have an interest for game development using Python and Lua.</p>
           <p>On this site are listed my own creations, that I develop in my free time. Most of them are just random experiments using various web technologies, that I wanted to share online.</p>
-          <p>I also write quite on bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
+          <p>I also write quite a bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
         `
       },
       projects: {
