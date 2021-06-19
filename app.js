@@ -43,7 +43,7 @@ let app = new Vue({
           
           <h2>Web apps</h2>
           <div class="collapsable">
-            <p><a href="/uno-online">Uno Online</a> is an web based multiplayer version of the original UNO card game, with unlimited players.</p>
+            <p><a href="/uno-online">Uno Online</a> is a web based multiplayer version of the original UNO card game, with unlimited players.</p>
             <p><a href="/ascii-converter">ASCII Converter</a> allows you, as the name says, to instantly convert images to ASCII text.</p>
             <p><a href="/search-by-lyrics">Search By Lyrics</a> lets you enter a part of a song’s lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!</p>
             <p><a href="/web-cmd">Web CMD</a> is an online CMD tool that can control devices remotely through the internet.</p>
