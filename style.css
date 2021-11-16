@@ -313,7 +313,7 @@ hr {
   }
   #desktop .window {
     width: 100vw;
-    height: calc(100% - 100px);
+    height: 100%;
     transform: none !important;
     left: 0px;
   }

@@ -368,11 +368,22 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
 
 
 window.addEventListener('load', (e) => {
+  loadArticles();
+  const div = document.querySelector('#terminal');
+
+  if (TOUCH) {
+    div.style.display = 'none';
+    document.querySelector('#app').style.filter = 'unset';
+    window.setTimeout(e => {
+      document.querySelector('#app').style.filter = 'blur(0px)';
+    }, 2e3);
+    return;
+  }
+
   const messages = ['Booting snake', 'Loading OS', 'Drawing icons', 'Installing apps', 'Refactoring legacy code', 'Clearing screen', 'Accelerating disk', 'Encrypting files', 'Aligning background elements'];
   shuffle(messages);
   messages.push('Finally starting');
 
-  const div = document.querySelector('#terminal');
   let delay = 0;
 
   messages.forEach((msg) => {
@@ -385,16 +396,20 @@ window.addEventListener('load', (e) => {
   window.setTimeout(() => {
     document.querySelector('#app').style.filter = 'unset';
     div.style.display = 'none';
+    window.setTimeout(e => {
+      document.querySelector('#app').style.filter = 'blur(0px)';
+    }, 2e3);
   }, messages.length * 1000);
 
   window.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
       document.querySelector('#app').style.filter = 'unset';
+      window.setTimeout(e => {
+        document.querySelector('#app').style.filter = 'blur(0px)';
+      }, 2e3);
       div.style.display = 'none';
     }
   });
-
-  loadArticles();
 });
 
 function shuffle(array) {
