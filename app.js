@@ -2,13 +2,17 @@ const TOUCH = 'ontouchstart' in document.documentElement;
 if (TOUCH) {
   document.documentElement.classList.add('touch');
 }
+const timeTemplate = tinytime('{h}:{mm} {a}');
+const dateTemplate = tinytime('{Mo}/{DD}/{YYYY}');
 
 const midX = window.innerWidth / 2;
 const midY = window.innerHeight / 2;
 
-let app = new Vue({
+const app = new Vue({
   el: '#app',
   data: {
+    time: timeTemplate.render(new Date()),
+    date: dateTemplate.render(new Date()),
     windowState: {
       home: {
         name: 'Home',
@@ -26,7 +30,7 @@ let app = new Vue({
       },
       projects: {
         name: 'Projects',
-        icon: 'fa-project-diagram',
+        icon: 'fa-folder-open',
         show: false,
         isMoving: false,
         coords: {x: midX - 25, y: midY - 25},
@@ -35,22 +39,27 @@ let app = new Vue({
 
           <h2>Desktop Apps</h2>
           <div class="collapsable">
-            <p><a href="http://www.mediafire.com/file/4bxkfdjo39megu0/Notes-win32-x64.zip/file">Notes app</a> is a simple note manager made using ElectronJS. It lets you easily create and edit notes, with an advanced rich text editor.</p>
-            <p><a href="http://www.mediafire.com/file/lfffkce3kmn5e8w/DiscordWebhookClient-win32-x64.zip/file">Discord Webhook Client</a> is another ElectronJS desktop app that lets you quickly send messages on Discord through webhooks. It supports basic messages as well as embeds with links, pictures and more.</p>
+            <ul>
+              <li><a href="http://www.mediafire.com/file/4bxkfdjo39megu0/Notes-win32-x64.zip/file">Notes app</a> is a simple note manager made using ElectronJS. It lets you easily create and edit notes, with an advanced rich text editor.</li>
+              <li><a href="http://www.mediafire.com/file/lfffkce3kmn5e8w/DiscordWebhookClient-win32-x64.zip/file">Discord Webhook Client</a> is another ElectronJS desktop app that lets you quickly send messages on Discord through webhooks. It supports basic messages as well as embeds with links, pictures and more.</li>
+            </ul>
           </div>
           
           <hr>
           
           <h2>Web apps</h2>
           <div class="collapsable">
-            <p><a href="/uno-online">Uno Online</a> is a web based multiplayer version of the original UNO card game, with unlimited players.</p>
-            <p><a href="/ascii-converter">ASCII Converter</a> allows you, as the name says, to instantly convert images to ASCII text.</p>
-            <p><a href="/search-by-lyrics">Search By Lyrics</a> lets you enter a part of a song’s lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!</p>
-            <p><a href="/web-cmd">Web CMD</a> is an online CMD tool that can control devices remotely through the internet.</p>
-            <p><a href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</p>
-            <p><a href="/web-chat">Web chat</a> is a prototype showing how you can use the realtime database in Google’s Firebase service to host data for a messaging web app. This chat features a global room where anyone can chat, and a private room creation feature. Just click the room name on the top left of your screen and start chatting privately.</p>
-            <p><a href="/tile-swap">Tile Swap</a> is a little puzzle game with random generation, which means there’s an infinite amount of puzzles for you to solve!</p>
-            <p><a href="/webline">Webline</a> is a web based terminal with lots of useful functions, like image to base64 conversion, client data fetching and much more.</p>
+            <p>These are the most notable web applications I've made, there's a quite few more on my <a href="https://github.com/oskar-codes?tab=repositories">GitHub profile</a>.</p>
+            <ul>
+              <li><a href="/uno-online">Uno Online</a> is a web based multiplayer version of the original UNO card game, with unlimited players.</li>
+              <li><a href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</li>
+              <li><a href="/search-by-lyrics">Search By Lyrics</a> lets you enter a part of a song’s lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!</li>
+              <li><a href="/ascii-converter">ASCII Converter</a> allows you, as the name says, to instantly convert images to ASCII text.</li>
+              <li><a href="/web-cmd">Web CMD</a> is an online CMD tool that can control devices remotely through the internet.</li>
+              <li><a href="/web-chat">Web chat</a> is a prototype showing how you can use the realtime database in Google’s Firebase service to host data for a messaging web app. This chat features a global room where anyone can chat, and a private room creation feature. Just click the room name on the top left of your screen and start chatting privately.</li>
+              <li><a href="/tile-swap">Tile Swap</a> is a little puzzle game with random generation, which means there’s an infinite amount of puzzles for you to solve! (For the new Tile Swap, check <a href="https://artridge.ch/TileSwap">artridge.ch</a>)</li>
+              <li><a href="/webline">Webline</a> was my first real project, and is a web based terminal with lots of useful functions, like image to base64 conversion, client data fetching and much more.</li>
+            </ul>
           </div>
           
           <hr>
@@ -58,9 +67,11 @@ let app = new Vue({
           <h2>Chrome extensions</h2>
           <div class="collapsable">
             <p>I’ve also made a couple of Chrome extensions that you might find useful. To install them, unzip the downloaded file, and then browse to chrome://extensions. Activate developer mode, and then click “load unpacked”. You can then browse to the unzipped folder and select it in order to load the extension.</p>
-            <p><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/web-image-converter.zip">Web Image Converter</a> lets you convert images to PNG or JPG simply by right clicking images you find online, and pressing convert. It’s as easy as that!</p>
-            <p><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/PasswordInputDisplayer.zip">Password Input Displayer</a> lets you easily check if the password you typed in a password field is correct. Just right-click the input field, and click “Show Password” to display it.</p>
-            <p><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/deep-fryer.zip">Deep Fryer</a> lets you toggle a DeepFry filter on any web page, because why not!</p>
+            <ul>
+              <li><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/web-image-converter.zip">Web Image Converter</a> lets you convert images to PNG or JPG simply by right clicking images you find online, and pressing convert. It’s as easy as that!</li>
+              <li><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/PasswordInputDisplayer.zip">Password Input Displayer</a> lets you easily check if the password you typed in a password field is correct. Just right-click the input field, and click “Show Password” to display it.</li>
+              <li><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/deep-fryer.zip">Deep Fryer</a> lets you toggle a DeepFry filter on any web page, because why not!</li>
+            </ul>
           </div>
 
           <hr>
@@ -101,8 +112,26 @@ let app = new Vue({
       }
     },
     zOrder: []
+  },
+  methods: {
+    openApp(name) {
+      name = name.toLowerCase();
+      this.windowState[name].show = true;
+      this.moveToFront(name);
+    },
+    moveToFront(name) {
+      name = name.toLowerCase();
+      const index = this.zOrder.indexOf(name);
+      this.zOrder.splice(index, 1);
+      this.zOrder.push(name);
+    }
   }
 });
+
+setInterval(() => {
+  app.time = timeTemplate.render(new Date());
+  app.date = dateTemplate.render(new Date());
+}, 1e3);
 
 // Define window zOrder
 (() => {
@@ -120,24 +149,24 @@ document.querySelectorAll('#desktop .window').forEach((win) => {
   const closeBtn = win.querySelector('.window-top button');
   const windowObj = app.windowState[name];
   win.id = name;
-
+/*
   closeBtn.addEventListener('click', (e) => {
     windowObj.show = false;
-  });
-
+  });*/
+/*
   win.addEventListener('mousedown', (e) => {
     moveToFront(name);
-  });
+  });*//*
   windowTop.addEventListener('mousedown', (e) => {
     windowObj.isMoving = true;
-  });
-  window.addEventListener('mouseup', (e) => {
+  });*/
+  addEventListener('mouseup', (e) => {
     windowObj.isMoving = false;
   });
 });
 
 const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
-window.addEventListener('mousemove', (e) => {
+addEventListener('mousemove', (e) => {
   for (win in app.windowState) {
     const windowObj = app.windowState[win];
     if (windowObj.isMoving && window.innerWidth > 800) {
@@ -149,20 +178,6 @@ window.addEventListener('mousemove', (e) => {
     }
   }
 });
-
-// Open windows from navbar
-document.querySelectorAll('#nav div button').forEach((btn) => {
-  btn.addEventListener('click', (evt) => {
-    const name = btn.getAttribute('data-name').toLowerCase();
-    openApp(name);
-  });
-});
-
-function openApp(name) {
-  name = name.toLowerCase();
-  app.windowState[name].show = true;
-  moveToFront(name);
-}
 
 // manage collapsables
 document.querySelectorAll('.collapsable').forEach((div) => {
@@ -181,15 +196,9 @@ document.querySelectorAll('.collapsable').forEach((div) => {
 (() => {
   document.querySelectorAll(`p > a[href^='/']`).forEach((e) => {
     const url = e.getAttribute('href');
-    e.parentElement.innerHTML += `<a href='https://github.com/oskar-codes${url}' target='_blank'>[code]</a>`
+    e.parentElement.innerHTML += `&nbsp;<a href='https://github.com/oskar-codes${url}' target='_blank'>[code]</a>`
   })
 })();
-
-function moveToFront(name) {
-  const index = app.zOrder.indexOf(name);
-  app.zOrder.splice(index, 1);
-  app.zOrder.push(name);
-}
 
 const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
 
@@ -367,7 +376,7 @@ const dist = (x1, y1, x2, y2) => Math.sqrt((x1 - x2)**2 + (y1- y2)**2);
 })();
 
 
-window.addEventListener('load', (e) => {
+addEventListener('load', (e) => {
   loadArticles();
   const div = document.querySelector('#terminal');
 
@@ -380,35 +389,32 @@ window.addEventListener('load', (e) => {
     return;
   }
 
-  const messages = ['Booting snake', 'Loading OS', 'Drawing icons', 'Installing apps', 'Refactoring legacy code', 'Clearing screen', 'Accelerating disk', 'Encrypting files', 'Aligning background elements'];
+  let turboLoading = false;
+  const messages = ['Booting snake', 'Loading OS', 'Drawing icons', 'Installing apps', 'Refactoring legacy code', 'Clearing screen', 'Accelerating disk', 'Encrypting files', 'Aligning background elements'].map(e => e + '...')
   shuffle(messages);
-  messages.push('Finally starting');
+  messages.splice(0, 0, 'Press [ENTER] to enable turbo loading')
+  messages.push('Finally starting...');
 
   let delay = 0;
 
-  messages.forEach((msg) => {
-    window.setTimeout(() => {
-      div.innerHTML += `<span class="loading">${msg}...</span><br>`;
-    }, delay);
-    delay += 600 + Math.random() * 400;
-  });
-
-  window.setTimeout(() => {
-    document.querySelector('#app').style.filter = 'unset';
-    div.style.display = 'none';
-    window.setTimeout(e => {
-      document.querySelector('#app').style.filter = 'blur(0px)';
-    }, 2e3);
-  }, messages.length * 1000);
-
-  window.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') {
+  let msgIndex = 0;
+  function addMessage() {
+    div.innerHTML += `<span class="loading">${messages[msgIndex]}</span><br>`;
+    msgIndex++;
+    if (msgIndex < messages.length) {
+      setTimeout(addMessage, turboLoading ? 25 : 600 + Math.random() * 400)
+    } else {
       document.querySelector('#app').style.filter = 'unset';
-      window.setTimeout(e => {
+      div.style.display = 'none';
+      setTimeout(e => {
         document.querySelector('#app').style.filter = 'blur(0px)';
       }, 2e3);
-      div.style.display = 'none';
     }
+  }
+  addMessage();
+
+  addEventListener('keyup', e => {
+    if (e.key === 'Enter') turboLoading = true;
   });
 });
 

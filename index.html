@@ -11,11 +11,18 @@
   <body>
     
     <div id="app">
-      <div id="nav">
+      <nav>
         <div>
-          <button v-for="window in windowState" :data-name="window.name"><i :class="'fas ' + window.icon"></i></button>
+          <button 
+            v-for="window in windowState"
+            @click="openApp(window.name);"
+            :data-name="window.name">
+            <i :class="'fas ' + window.icon"></i>
+          </button>
         </div>
-      </div>
+        <span>{{ time }}</span>
+        <span>{{ date }}</span>
+      </nav>
 
       <div id="desktop">
         <div id="background-title">
@@ -25,12 +32,21 @@
 
         <div id="windows">
           
-          <div v-for="window in windowState" class="window" v-show="window.show" :style="`transform: translate(${window.coords.x}px, ${window.coords.y}px) translateX(-50%) translateY(-50%); zIndex: ${zOrder.indexOf(window.name.toLowerCase())};`">
-            <div class="window-top">
-              <button>✕</button>
-              <span>{{window.name}}</span>
+          <div 
+          v-for="window in windowState"
+          class="window"
+          v-show="window.show"
+          @mousedown="moveToFront(window.name)"
+          :style="`transform: translate(${window.coords.x}px, ${window.coords.y}px) translateX(-50%) translateY(-50%); zIndex: ${zOrder.indexOf(window.name.toLowerCase())};`">
+            
+            <div class="window-top" @mousedown="window.isMoving = true">
+              <button @click="window.show = false;">✕</button>
+              <span><i :class="'fas ' + window.icon"></i>{{window.name}}</span>
+              <span>{{ time }}</span>
             </div>
+
             <div class="window-content" v-html="window.content"></div>
+          
           </div>
 
         </div>
@@ -39,10 +55,10 @@
 
       <canvas id="background-canvas"></canvas>
     </div>
-      
 
     <div id="terminal"></div>
 
+    <script src="tinytime.min.js"></script>
     <script src="hammer.min.js"></script>
     <script src="tinycolor.js"></script>
     <script src="simple-canvas.js"></script>
