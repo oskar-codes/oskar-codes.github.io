@@ -16,7 +16,8 @@
           <button 
             v-for="window in windowState"
             @click="openApp(window.name);"
-            :data-name="window.name">
+            :data-name="window.name"
+            :data-active="window.show">
             <i :class="'fas ' + window.icon"></i>
           </button>
         </div>

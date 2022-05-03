@@ -45,6 +45,17 @@ button {
   cursor: pointer;
 }
 
+.big-btn {
+  margin: 40px auto;
+  display: block;
+  font-size: 20px;
+  padding: 10px 20px;
+}
+
+.big-btn:active {
+  transform: translateY(1px);
+}
+
 button:focus {
   outline: none;
 }
@@ -107,6 +118,13 @@ nav button {
   height: 80px;
   position: relative;
   font-size: 32px;
+  transition: all 0.1s ease;
+}
+
+nav button[data-active=true]:before {
+  content: '';
+  display: block;
+  width: 5px;
 }
 
 nav button i {
@@ -249,23 +267,39 @@ nav button:hover::after {
   z-index: 10;
 }
 
-
-/* .loading::after {
-  content: '.';
-  animation: dots 2s infinite;
+#terminal span:nth-of-type(1) {
+  animation: pulse 1s linear infinite alternate-reverse;
 }
 
-@keyframes dots {
-  30% {
-    content: '.';
+@keyframes pulse {
+  0% {
+    color: white;
+  }
+  12.5% {
+    color: var(--col-green);
+  }
+  25% {
+    color: white;
+  }
+  37.5% {
+    color: var(--col-pink);
   }
   50% {
-    content: '..';
+    color: white;
+  }
+  62.5% {
+    color: var(--col-lime);
+  }
+  75% {
+    color: white;
+  }
+  87.5% {
+    color: var(--col-purple);
   }
   100% {
-    content: '...';
+    color: white;
   }
-} */
+}
 
 .article {
   border-radius: 5px;

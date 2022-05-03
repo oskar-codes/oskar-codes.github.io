@@ -26,6 +26,7 @@ const app = new Vue({
           <p>I mostly code in HTML, CSS, and JavaScript for web development, but I also have an interest for game development using Python and Lua.</p>
           <p>On this site are listed my own creations, that I develop in my free time. Most of them are just random experiments using various web technologies, that I wanted to share online.</p>
           <p>I also write quite a bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
+          <button class="big-btn" onclick="app.openApp('projects')">Go to projects</button>
         `
       },
       projects: {
@@ -54,6 +55,7 @@ const app = new Vue({
               <li><a href="/uno-online">Uno Online</a> is a web based multiplayer version of the original UNO card game, with unlimited players.</li>
               <li><a href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</li>
               <li><a href="/search-by-lyrics">Search By Lyrics</a> lets you enter a part of a song’s lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!</li>
+              <li><a href="/simple-canvas">Simple Canvas</a> is not a web app, but a library for easy game development for the web. See <a href="/simple-canvas/examples/shooter.html">this example</a>.</li>
               <li><a href="/ascii-converter">ASCII Converter</a> allows you, as the name says, to instantly convert images to ASCII text.</li>
               <li><a href="/web-cmd">Web CMD</a> is an online CMD tool that can control devices remotely through the internet.</li>
               <li><a href="/web-chat">Web chat</a> is a prototype showing how you can use the realtime database in Google’s Firebase service to host data for a messaging web app. This chat features a global room where anyone can chat, and a private room creation feature. Just click the room name on the top left of your screen and start chatting privately.</li>
@@ -194,7 +196,7 @@ document.querySelectorAll('.collapsable').forEach((div) => {
 
 // Add code links to web apps
 (() => {
-  document.querySelectorAll(`p > a[href^='/']`).forEach((e) => {
+  document.querySelectorAll(`li > a[href^='/']:nth-of-type(1)`).forEach((e) => {
     const url = e.getAttribute('href');
     e.parentElement.innerHTML += `&nbsp;<a href='https://github.com/oskar-codes${url}' target='_blank'>[code]</a>`
   })
@@ -399,7 +401,11 @@ addEventListener('load', (e) => {
 
   let msgIndex = 0;
   function addMessage() {
-    div.innerHTML += `<span class="loading">${messages[msgIndex]}</span><br>`;
+    const span = document.createElement('span');
+    span.classList.add('loading');
+    span.textContent = messages[msgIndex];
+    div.append(span, document.createElement('br'));
+
     msgIndex++;
     if (msgIndex < messages.length) {
       setTimeout(addMessage, turboLoading ? 25 : 600 + Math.random() * 400)
