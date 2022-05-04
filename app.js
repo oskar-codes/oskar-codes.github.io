@@ -17,7 +17,7 @@ const app = new Vue({
       home: {
         name: 'Home',
         icon: 'fa-home',
-        show: true,
+        show: false,
         isMoving: false,
         coords: {x: midX - 50, y: midY - 50},
         content: `
@@ -50,10 +50,10 @@ const app = new Vue({
           
           <h2>Web apps</h2>
           <div class="collapsable">
-            <p>These are the most notable web applications I've made, but there's a quite few more on my <a href="https://github.com/oskar-codes?tab=repositories">GitHub profile</a>.</p>
+            <p>These are the most notable web applications I've made, but there's a quite few more on my <a target='_blank' href="https://github.com/oskar-codes?tab=repositories">GitHub profile</a>.</p>
             <ul>
               <li><a target='_blank' href="/uno-online">Uno Online</a> is a web based multiplayer version of the original UNO card game, with unlimited players.</li>
-              <li><a target='_blank' href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</li>
+              <li><a target='_blank' href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a target='_blank' href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</li>
               <li><a target='_blank' href="/search-by-lyrics">Search By Lyrics</a> lets you enter a part of a song’s lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!</li>
               <li><a target='_blank' href="/simple-canvas">Simple Canvas</a> is not a web app, but a library for easy game development for the web. See <a href="/simple-canvas/examples/shooter.html">this example</a>.</li>
               <li><a target='_blank' href="/ascii-converter">ASCII Converter</a> allows you, as the name says, to instantly convert images to ASCII text.</li>
@@ -121,6 +121,11 @@ const app = new Vue({
       this.windowState[name].show = true;
       this.moveToFront(name);
     },
+    closeApp(name) {
+      name = name.toLowerCase();
+      this.windowState[name].show = false;
+      this.zOrder.splice(0, 0, this.zOrder.pop());
+    },
     moveToFront(name) {
       name = name.toLowerCase();
       const index = this.zOrder.indexOf(name);
@@ -142,6 +147,7 @@ setInterval(() => {
       app.zOrder.push(key);
     }
   }
+  app.openApp('home')
 })();
 
 // Manage windows
@@ -445,7 +451,7 @@ function loadArticles() {
     for (let i = 0; i < data.length; i++) {
       const article = data[i];
       const html = `
-        <a href="${article.canonical_url}" target="_blank">
+        <a href="${article.canonical_url}" target='_blank'>
           <div class="article">
             <i>${article.readable_publish_date}</i>
             <h2>${article.title}</h2>

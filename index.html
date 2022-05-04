@@ -17,7 +17,7 @@
             v-for="window in windowState"
             @click="openApp(window.name);"
             :data-name="window.name"
-            :data-active="window.show">
+            :data-active="zOrder[zOrder.length - 1] === window.name.toLowerCase() && window.show">
             <i :class="'fas ' + window.icon"></i>
           </button>
         </div>
@@ -41,7 +41,7 @@
           :style="`transform: translate(${window.coords.x}px, ${window.coords.y}px) translateX(-50%) translateY(-50%); zIndex: ${zOrder.indexOf(window.name.toLowerCase())};`">
             
             <div class="window-top" @mousedown="window.isMoving = true">
-              <button @click="window.show = false;">✕</button>
+              <button @click="closeApp(window.name)">✕</button>
               <span><i :class="'fas ' + window.icon"></i>{{window.name}}</span>
               <span>{{ time }}</span>
             </div>
