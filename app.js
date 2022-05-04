@@ -50,7 +50,7 @@ const app = new Vue({
           
           <h2>Web apps</h2>
           <div class="collapsable">
-            <p>These are the most notable web applications I've made, there's a quite few more on my <a href="https://github.com/oskar-codes?tab=repositories">GitHub profile</a>.</p>
+            <p>These are the most notable web applications I've made, but there's a quite few more on my <a href="https://github.com/oskar-codes?tab=repositories">GitHub profile</a>.</p>
             <ul>
               <li><a href="/uno-online">Uno Online</a> is a web based multiplayer version of the original UNO card game, with unlimited players.</li>
               <li><a href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</li>
