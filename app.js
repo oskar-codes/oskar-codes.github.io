@@ -22,10 +22,10 @@ const app = new Vue({
         coords: {x: midX - 50, y: midY - 50},
         content: `
           <h1>Oskar Codes</h1>
-          <p>I’m Oskar Zanota, a ${new Date((new Date().getTime()) - (new Date('December 17, 2004').getTime())).getFullYear() - 1970} year old front-end developer based in Zurich, Switzerland. I’m the main programmer at <a href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a href="https://artridge.ch">here</a>.</p> 
+          <p>I’m Oskar Zanota, a ${new Date((new Date().getTime()) - (new Date('December 17, 2004').getTime())).getFullYear() - 1970} year old front-end developer based in Zurich, Switzerland. I’m the main programmer at <a target='_blank' href="https://twitter.com/ArtridgeGames">@Artridge</a>, where I work on the projects available <a target='_blank' href="https://artridge.ch">here</a>.</p> 
           <p>I mostly code in HTML, CSS, and JavaScript for web development, but I also have an interest for game development using Python and Lua.</p>
           <p>On this site are listed my own creations, that I develop in my free time. Most of them are just random experiments using various web technologies, that I wanted to share online.</p>
-          <p>I also write quite a bit on <a href="https://dev.to/oskarcodes">dev.to</a>.</p>
+          <p>I also write quite a bit on <a target='_blank' href="https://dev.to/oskarcodes">dev.to</a>.</p>
           <button class="big-btn" onclick="app.openApp('projects')">Go to projects</button>
         `
       },
@@ -41,8 +41,8 @@ const app = new Vue({
           <h2>Desktop Apps</h2>
           <div class="collapsable">
             <ul>
-              <li><a href="http://www.mediafire.com/file/4bxkfdjo39megu0/Notes-win32-x64.zip/file">Notes app</a> is a simple note manager made using ElectronJS. It lets you easily create and edit notes, with an advanced rich text editor.</li>
-              <li><a href="http://www.mediafire.com/file/lfffkce3kmn5e8w/DiscordWebhookClient-win32-x64.zip/file">Discord Webhook Client</a> is another ElectronJS desktop app that lets you quickly send messages on Discord through webhooks. It supports basic messages as well as embeds with links, pictures and more.</li>
+              <li><a target='_blank' href="http://www.mediafire.com/file/4bxkfdjo39megu0/Notes-win32-x64.zip/file">Notes app</a> is a simple note manager made using ElectronJS. It lets you easily create and edit notes, with an advanced rich text editor.</li>
+              <li><a target='_blank' href="http://www.mediafire.com/file/lfffkce3kmn5e8w/DiscordWebhookClient-win32-x64.zip/file">Discord Webhook Client</a> is another ElectronJS desktop app that lets you quickly send messages on Discord through webhooks. It supports basic messages as well as embeds with links, pictures and more.</li>
             </ul>
           </div>
           
@@ -52,15 +52,15 @@ const app = new Vue({
           <div class="collapsable">
             <p>These are the most notable web applications I've made, but there's a quite few more on my <a href="https://github.com/oskar-codes?tab=repositories">GitHub profile</a>.</p>
             <ul>
-              <li><a href="/uno-online">Uno Online</a> is a web based multiplayer version of the original UNO card game, with unlimited players.</li>
-              <li><a href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</li>
-              <li><a href="/search-by-lyrics">Search By Lyrics</a> lets you enter a part of a song’s lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!</li>
-              <li><a href="/simple-canvas">Simple Canvas</a> is not a web app, but a library for easy game development for the web. See <a href="/simple-canvas/examples/shooter.html">this example</a>.</li>
-              <li><a href="/ascii-converter">ASCII Converter</a> allows you, as the name says, to instantly convert images to ASCII text.</li>
-              <li><a href="/web-cmd">Web CMD</a> is an online CMD tool that can control devices remotely through the internet.</li>
-              <li><a href="/web-chat">Web chat</a> is a prototype showing how you can use the realtime database in Google’s Firebase service to host data for a messaging web app. This chat features a global room where anyone can chat, and a private room creation feature. Just click the room name on the top left of your screen and start chatting privately.</li>
-              <li><a href="/tile-swap">Tile Swap</a> is a little puzzle game with random generation, which means there’s an infinite amount of puzzles for you to solve! (For the new Tile Swap, check <a href="https://artridge.ch/TileSwap">artridge.ch</a>)</li>
-              <li><a href="/webline">Webline</a> was my first real project, and is a web based terminal with lots of useful functions, like image to base64 conversion, client data fetching and much more.</li>
+              <li><a target='_blank' href="/uno-online">Uno Online</a> is a web based multiplayer version of the original UNO card game, with unlimited players.</li>
+              <li><a target='_blank' href="/chopsticks-game">Chopsticks Game</a> is an online multiplayer version of the famous <a href="https://en.wikipedia.org/wiki/Chopsticks_(hand_game)">Chopsticks</a> hand game.</li>
+              <li><a target='_blank' href="/search-by-lyrics">Search By Lyrics</a> lets you enter a part of a song’s lyrics, and displays the song, as well as a Spotify embed if available. This is the perfect solution if you remember the lyrics of a song, but not the title!</li>
+              <li><a target='_blank' href="/simple-canvas">Simple Canvas</a> is not a web app, but a library for easy game development for the web. See <a href="/simple-canvas/examples/shooter.html">this example</a>.</li>
+              <li><a target='_blank' href="/ascii-converter">ASCII Converter</a> allows you, as the name says, to instantly convert images to ASCII text.</li>
+              <li><a target='_blank' href="/web-cmd">Web CMD</a> is an online CMD tool that can control devices remotely through the internet.</li>
+              <li><a target='_blank' href="/web-chat">Web chat</a> is a prototype showing how you can use the realtime database in Google’s Firebase service to host data for a messaging web app. This chat features a global room where anyone can chat, and a private room creation feature. Just click the room name on the top left of your screen and start chatting privately.</li>
+              <li><a target='_blank' href="/tile-swap">Tile Swap</a> is a little puzzle game with random generation, which means there’s an infinite amount of puzzles for you to solve! (For the new Tile Swap, check <a href="https://artridge.ch/TileSwap">artridge.ch</a>)</li>
+              <li><a target='_blank' href="/webline">Webline</a> was my first real project, and is a web based terminal with lots of useful functions, like image to base64 conversion, client data fetching and much more.</li>
             </ul>
           </div>
           
@@ -70,9 +70,9 @@ const app = new Vue({
           <div class="collapsable">
             <p>I’ve also made a couple of Chrome extensions that you might find useful. To install them, unzip the downloaded file, and then browse to chrome://extensions. Activate developer mode, and then click “load unpacked”. You can then browse to the unzipped folder and select it in order to load the extension.</p>
             <ul>
-              <li><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/web-image-converter.zip">Web Image Converter</a> lets you convert images to PNG or JPG simply by right clicking images you find online, and pressing convert. It’s as easy as that!</li>
-              <li><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/PasswordInputDisplayer.zip">Password Input Displayer</a> lets you easily check if the password you typed in a password field is correct. Just right-click the input field, and click “Show Password” to display it.</li>
-              <li><a href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/deep-fryer.zip">Deep Fryer</a> lets you toggle a DeepFry filter on any web page, because why not!</li>
+              <li><a target='_blank' href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/web-image-converter.zip">Web Image Converter</a> lets you convert images to PNG or JPG simply by right clicking images you find online, and pressing convert. It’s as easy as that!</li>
+              <li><a target='_blank' href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/PasswordInputDisplayer.zip">Password Input Displayer</a> lets you easily check if the password you typed in a password field is correct. Just right-click the input field, and click “Show Password” to display it.</li>
+              <li><a target='_blank' href="https://github.com/oskar-codes/oskar-codes.github.io/raw/master/extensions/deep-fryer.zip">Deep Fryer</a> lets you toggle a DeepFry filter on any web page, because why not!</li>
             </ul>
           </div>
 
@@ -95,10 +95,10 @@ const app = new Vue({
         coords: {x: midX + 25, y: midY + 25},
         content: `
           <div>
-            <a href="mailto:oskar.codes@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://twitter.com/ZOSK_"><i class="fab fa-twitter"></i></a>
-            <a href="https://dev.to/oskarcodes"><i class="fab fa-dev"></i></a>
-            <a href="https://github.com/oskar-codes"><i class="fab fa-github"></i></a>
+            <a target='_blank' href="mailto:oskar.codes@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a target='_blank' href="https://twitter.com/ZOSK_"><i class="fab fa-twitter"></i></a>
+            <a target='_blank' href="https://dev.to/oskarcodes"><i class="fab fa-dev"></i></a>
+            <a target='_blank' href="https://github.com/oskar-codes"><i class="fab fa-github"></i></a>
           </div>
         `
       },
