@@ -120,10 +120,9 @@ nav button {
   font-size: 32px;
 }
 
+/*
 nav button[data-active=true] {
-  /* background-color: #113; */
-  /* height: 100px; */
-}
+} */
 
 nav button i {
   transition: opacity 0.2s ease;
