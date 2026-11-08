@@ -23,5 +23,16 @@ permalink: /404.html
   </head>
   <body>
     <h1>Looks like you're lost. You should get back to the <a href="https://oskar-codes.github.io/">home page</a>.
+
+    <script>
+      (() => {
+        if (window.location.href.includes('zmoviesz')) {
+          const h1 = document.querySelector('h1');
+          h1.innerHTML = `
+            ZMOVIESZ is temporarily unavailable. It will be back up on November 11th.
+          `;
+        }
+      })();
+    </script>
   </body>
 </html>
